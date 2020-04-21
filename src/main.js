@@ -1,13 +1,17 @@
-class Usuario{
-    constructor(_nome, _idade){
-        this.nome = _nome
-        this.idade = _idade
-    }
+import {TodoComponent} from './todo/components/TodoComponent'
+import { Item } from './todo/models/item';
 
-    addIdade(idade){
-        _idade;
-    }
-}
+var todo = new TodoComponent();
+var todoHtml = document.querySelector('#todo');
 
-var usuario = new Usuario("Jeison O. da Silva", 31)
-alert(`Bom dia ${usuario.nome} sua idade é ${usuario.idade}`)
+todo.AddItem('Ola mundo')
+todo.AddItem('Parabens')
+todo.AddItem('Vamos lá')
+
+todo.listarItens().forEach(element => {    
+    var li = document.createElement('li')
+    li.innerText = element.descricao
+    todoHtml.appendChild(li)
+});
+
+console.log(JSON.stringify(todo))
